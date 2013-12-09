@@ -1,5 +1,7 @@
 package fr.sebgghb22.droidarena.gdx;
 
+import java.util.HashMap;
+
 import org.jbox2d.dynamics.World;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -28,9 +30,11 @@ public class DroidArena implements ApplicationListener {
 	private World world;
 	private Arena arena;
 	private Robot player;
+	private final HashMap<String, Texture> textureManager;
 
 	public DroidArena(Game g) {
 		this.g = g;
+		textureManager = new HashMap<>();
 	}
 
 	@Override
@@ -53,8 +57,21 @@ public class DroidArena implements ApplicationListener {
 		batch = new SpriteBatch();
 		this.world = MyWorld.getWorld();
 
+		/**
+		 * 
+		 * Loading  a texture only one time using an hashmap
+		 * 
+		 */
+		
 		for (Item i : arena.getItems()) {
-			i.setTexture(new Texture(Gdx.files.internal(Option.SPRITESFOLDER + i.getImg())));
+			String img = i.getImg();
+			if (textureManager.containsKey(img)) {
+				i.setTexture(textureManager.get(img));
+			} else {
+				Texture texture = new Texture(Gdx.files.internal(Option.SPRITESFOLDER + img));
+				textureManager.put(img, texture);
+				i.setTexture(texture);
+			}
 		}
 	}
 
