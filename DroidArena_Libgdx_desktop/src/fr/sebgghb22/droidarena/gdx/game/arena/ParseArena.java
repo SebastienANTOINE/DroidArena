@@ -39,31 +39,27 @@ public class ParseArena {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static ConcurrentLinkedQueue<Level> parse(InputStream arena) throws IOException{
-		
-		ConcurrentLinkedQueue<Level> levels = new ConcurrentLinkedQueue<Level>();		
-		ArrayList<Bloc> elements= new ArrayList<Bloc>();
-		ArrayList<Vec2> freeBlocs = new ArrayList<Vec2>();
-		String lineRead;
+
+
+		ConcurrentLinkedQueue<Level> levels = new ConcurrentLinkedQueue<>();		
+		ArrayList<Bloc> elements= new ArrayList<>();
+		ArrayList<Vec2> freeBlocs = new ArrayList<>();
+		String line;
 		int width=0;
 		int height=0;
 		int startCounter=0;
 		int finishCounter=0;
 		BufferedReader bf = new BufferedReader(new InputStreamReader(arena));
 		int i;
-		ArrayList<String> lines= new ArrayList<String>();
-		while((lineRead = bf.readLine()) != null){
-			lines.add(0, lineRead);
-			if(width<lineRead.length()){
-				width=lineRead.length();
+		while((line = bf.readLine()) != null){
+
+			if(width<line.length()){
+				width=line.length();
 			}
-		}
-		for(String line : lines){
-			
 			i=0;
 			for(char c : line.toCharArray()){
 				switch(c){
 				case 'w' :{
-					
 					elements.add(new Bloc(Properties.WOOD,(float)i*Option.UNIT,(float)height*Option.UNIT));
 					break;
 				}
@@ -84,7 +80,7 @@ public class ParseArena {
 					break;
 				}
 				case 'C' :{
-					elements.add(new Bloc(Properties.SCONCRETE,i*Option.UNIT,height*Option.UNIT));
+					elements.add(new Bloc(Properties.SCONCRETE,(float)i*Option.UNIT,(float)height*Option.UNIT));
 					break;
 				}
 
@@ -118,8 +114,8 @@ public class ParseArena {
 				case  '-' :{
 					if(startCounter==2&&finishCounter>0){
 					levels.offer(new Level(freeBlocs, elements,width,height,elements.get(0)));
-					elements= new ArrayList<Bloc>();
-					freeBlocs = new ArrayList<Vec2>();
+					elements= new ArrayList<>();
+					freeBlocs = new ArrayList<>();
 					height=-1;
 					width=0;
 					startCounter=0;

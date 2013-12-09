@@ -31,7 +31,8 @@ public class DroidArena implements ApplicationListener {
 	private Arena arena;
 	private Robot player;
 	private final HashMap<String, Texture> textureManager;
-
+	
+	
 	public DroidArena(Game g) {
 		this.g = g;
 		textureManager = new HashMap<>();
