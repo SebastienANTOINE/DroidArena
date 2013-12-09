@@ -69,4 +69,6 @@ public class Option {
 	
 	/** The SCREENHEIGHT. */
 	public static int SCREENHEIGHT;
+	
+	public final static String SPRITESFOLDER="sprites/";
 }

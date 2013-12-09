@@ -54,7 +54,7 @@ public class Bloc implements Item  {
 		this.p = p;
 		this.img= p.getImg();
 		bd.type = p.getBodyType();
-		bd.position.set(new Vec2((x+(25))*Option.SCALING, (y+(25))*Option.SCALING));
+		bd.position.set(new Vec2(x*Option.SCALING, y*Option.SCALING));
 		/*to scale image and body on the frame*/
 	}
 
@@ -64,7 +64,7 @@ public class Bloc implements Item  {
 	@Override
 	public Vec2 getCenter() {
 		Vec2 center = body.getPosition();
-		return new Vec2((center.x/Option.SCALING)+Option.UNIT/2,(center.y/Option.SCALING)+Option.UNIT/2);
+		return new Vec2((center.x/Option.SCALING)+tex.getWidth()/2,(center.y/Option.SCALING)+tex.getHeight()/2);
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +72,7 @@ public class Bloc implements Item  {
 	 */
 	@Override
 	public Vec2 getScreenPosition() {
-		return body.getPosition();
+		return new Vec2(body.getPosition().x/Option.SCALING,body.getPosition().y/Option.SCALING);
 	}
 
 

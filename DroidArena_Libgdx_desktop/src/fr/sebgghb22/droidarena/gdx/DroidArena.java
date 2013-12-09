@@ -31,7 +31,6 @@ public class DroidArena implements ApplicationListener {
 
 	public DroidArena(Game g) {
 		this.g = g;
-
 	}
 
 	@Override
@@ -42,8 +41,8 @@ public class DroidArena implements ApplicationListener {
 		System.out.println(level1.getBlocs().size());
 
 		arena = new Arena(level1.getWidth(), level1.getHeight());
-		arena.setScreenSizeHeight((int) 1000);
-		arena.setScreenSizeWidth((int) 480);
+		arena.setScreenSizeHeight((int) 480);
+		arena.setScreenSizeWidth((int) 800);
 		arena.addAll(level1.getBlocs());
 
 		player = new Robot(Properties.PLAYER1, arena.getStartPosition().x, arena.getStartPosition().y, arena);
@@ -55,7 +54,7 @@ public class DroidArena implements ApplicationListener {
 		this.world = MyWorld.getWorld();
 
 		for (Item i : arena.getItems()) {
-			i.setTexture(new Texture(Gdx.files.internal(i.getImg())));
+			i.setTexture(new Texture(Gdx.files.internal(Option.SPRITESFOLDER + i.getImg())));
 		}
 	}
 
@@ -86,7 +85,7 @@ public class DroidArena implements ApplicationListener {
 		batch.begin();
 
 		for (Item i : arena.getItems()) {
-			System.out.println(""+i.getScreenPosition().x+" =>"+ i.getScreenPosition().y);
+			System.out.println("" + i.getScreenPosition().x + " =>" + i.getScreenPosition().y);
 			batch.draw(i.getTexture(), i.getScreenPosition().x, i.getScreenPosition().y);
 			i.update();
 		}
