@@ -34,7 +34,6 @@ import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 import fr.sebgghb22.droidarena.gdx.game.arena.Arena;
@@ -127,7 +126,7 @@ public class Enemy extends Bloc {
 	 * Use this function to rotate the robot on its right
 	 */
 	protected void right() {	
-		body.setTransform(body.getWorldCenter(), (float) (body.getAngle() + rotateSpeed));
+		body.setTransform(body.getWorldCenter(), body.getAngle() + rotateSpeed);
 	}
 
 
@@ -135,7 +134,7 @@ public class Enemy extends Bloc {
 	 * Use this function to rotate the robot on its Left.
 	 */
 	protected void left() {
-		body.setTransform(body.getWorldCenter(), (float) (body.getAngle() - rotateSpeed));
+		body.setTransform(body.getWorldCenter(), body.getAngle() - rotateSpeed);
 	}
 
 	/* (non-Javadoc)
@@ -267,7 +266,7 @@ public class Enemy extends Bloc {
 			enemyAngle = (float) (sin((robotPos.x-enemyPos.x) / distance(enemyPos, robotPos)));
 		}
 
-		body.setTransform(body.getWorldCenter(), (float) (enemyAngle));
+		body.setTransform(body.getWorldCenter(), (enemyAngle));
 		if(speed < 30){
 			speed++;
 		}

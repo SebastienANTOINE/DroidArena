@@ -18,7 +18,6 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 import fr.sebgghb22.droidarena.gdx.utils.Option;
@@ -126,6 +125,7 @@ public class Bloc implements Item  {
 	 *
 	 * @return the {@link Properties}
 	 */
+	@Override
 	public Properties getProperties() {
 		return this.p;
 	}

@@ -41,9 +41,9 @@ public class ParseArena {
 	public static ConcurrentLinkedQueue<Level> parse(InputStream arena) throws IOException{
 
 
-		ConcurrentLinkedQueue<Level> levels = new ConcurrentLinkedQueue<>();		
-		ArrayList<Bloc> elements= new ArrayList<>();
-		ArrayList<Vec2> freeBlocs = new ArrayList<>();
+		ConcurrentLinkedQueue<Level> levels = new ConcurrentLinkedQueue<Level>();		
+		ArrayList<Bloc> elements= new ArrayList<Bloc>();
+		ArrayList<Vec2> freeBlocs = new ArrayList<Vec2>();
 		String line;
 		int width=0;
 		int height=0;
@@ -114,8 +114,8 @@ public class ParseArena {
 				case  '-' :{
 					if(startCounter==2&&finishCounter>0){
 					levels.offer(new Level(freeBlocs, elements,width,height,elements.get(0)));
-					elements= new ArrayList<>();
-					freeBlocs = new ArrayList<>();
+					elements= new ArrayList<Bloc>();
+					freeBlocs = new ArrayList<Vec2>();
 					height=-1;
 					width=0;
 					startCounter=0;

@@ -11,6 +11,8 @@
  */
 package fr.sebgghb22.droidarena.gdx.utils;
 
+import java.awt.Toolkit;
+
 import org.jbox2d.common.Vec2;
 
 // TODO: Auto-generated Javadoc
@@ -61,14 +63,17 @@ public class Option {
 	public static float SCALING=0.1f;
 	
 	/** The TIMESEC. */
-	public static int TIMESEC = 2000;/*valeur de boucle correspondant à la Durée d'une seconde de refresh*/
-
-	/*Get the dimension of you screen computer*/
-	/** The SCREENWIDTH. */
-	public static int SCREENWIDTH;
-	
-	/** The SCREENHEIGHT. */
-	public static int SCREENHEIGHT;
+	public static int TIMESEC = 2000;
 	
 	public final static String SPRITESFOLDER="sprites/";
+	
+	/*Get the dimension of you screen computer*/
+	/** The SCREENWIDTH. */
+	public static int SCREENWIDTH =Toolkit.getDefaultToolkit().getScreenSize().width;
+	
+	/** The SCREENHEIGHT. */
+	public static int SCREENHEIGHT =Toolkit.getDefaultToolkit().getScreenSize().height;
+	
+	private static final float MAX_HORIZONTAL_SPEED = 250 ;
+	private static final float MAX_VERTICAL_SPEED = 250;
 }

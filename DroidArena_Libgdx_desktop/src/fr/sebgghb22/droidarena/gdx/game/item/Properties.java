@@ -17,7 +17,7 @@ import org.jbox2d.dynamics.BodyType;
 public enum Properties {
 
 
-	CONCRETE(Sprite.CONCRETE,BodyType.STATIC,10,false,false),SCONCRETE(Sprite.SCONCRETE,BodyType.STATIC,10,false,false),PLAYER1(Sprite.PLAYER1,BodyType.DYNAMIC,0,true,false),PLAYER2(Sprite.PLAYER2,BodyType.DYNAMIC,0,true,false),
+	CONCRETE(Sprite.CONCRETE,BodyType.STATIC,10,false,false),SCONCRETE(Sprite.SCONCRETE,BodyType.STATIC,10,false,false),PLAYER1(Sprite.PLAYER1,BodyType.DYNAMIC,0,true,true),PLAYER2(Sprite.PLAYER2,BodyType.DYNAMIC,0,true,false),
 	ENEMY(Sprite.ENEMY,BodyType.DYNAMIC,0,true,false),ICE(Sprite.ICE,BodyType.STATIC,10,false,false),WOOD(Sprite.WOOD,BodyType.STATIC,10,true,false),START(Sprite.START,BodyType.STATIC,0,true,true),FINISH(Sprite.FINISH,BodyType.STATIC,0,true,true),
 	BONUS(Sprite.UNKNOWN,BodyType.DYNAMIC,80,false,true),TRACE(Sprite.CLOUD,BodyType.STATIC,10,false,true);
 

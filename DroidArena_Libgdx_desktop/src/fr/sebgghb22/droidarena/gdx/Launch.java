@@ -9,6 +9,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import fr.sebgghb22.droidarena.gdx.game.arena.Level;
 import fr.sebgghb22.droidarena.gdx.game.arena.ParseArena;
+import fr.sebgghb22.droidarena.gdx.utils.Option;
 
 public class Launch {
 
@@ -18,8 +19,8 @@ public class Launch {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "DroidArena";
-		cfg.width = 800;
-		cfg.height = 480;
+		cfg.width = Option.SCREENWIDTH;
+		cfg.height = Option.SCREENHEIGHT;
 		InputStream ims = Launch.class.getClass().getResourceAsStream(
 				"/fr/sebgghb22/droidarena/gdx/arena.txt");
 		ConcurrentLinkedQueue<Level> levels = null;
