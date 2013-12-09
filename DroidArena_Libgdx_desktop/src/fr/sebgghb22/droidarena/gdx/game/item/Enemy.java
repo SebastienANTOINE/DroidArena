@@ -67,7 +67,8 @@ public class Enemy extends Bloc {
 	
 	private int timeSleeping=TIMESEC*5;
 	
-	protected Texture img;
+	protected Texture tex;
+	protected String img;
 	/**
 	 * Instantiates a new enemy.
 	 *
@@ -80,7 +81,7 @@ public class Enemy extends Bloc {
 		super(p,x,y);
 		this.arena = arena;
 		r = new Random();
-		this.img = new Texture(p.getImg());
+		this.img = p.getImg();
 	}
 
 	/* (non-Javadoc)
@@ -276,18 +277,14 @@ public class Enemy extends Bloc {
 	
 	public void disable(){
 		active=false;
-		img= new Texture(Gdx.files.internal(Sprite.ENEMYOFF.getImg()));
+		img= Sprite.ENEMYOFF.getImg();
 	}
 	
 	@Override
 	public Properties getProperties() {
 		return p;
 	}
-
-	@Override
-	public Texture getSprite() {
-		return img;
-	}
+	
 	
 	@Override
 	public float getAngle(){

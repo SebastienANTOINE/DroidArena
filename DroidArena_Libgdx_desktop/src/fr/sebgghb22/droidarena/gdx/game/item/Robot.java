@@ -137,7 +137,7 @@ public class Robot extends Bloc  {
 		if(!alive){
 			this.alive = alive;
 			this.life=0;
-			img=new Texture(Gdx.files.internal(Sprite.RIP.getImg()));
+			img=Sprite.RIP.getImg();
 			body.setTransform(body.getWorldCenter(), 0);
 			for(Joint j : joints){
 				MyWorld.getWorld().destroyJoint(j);

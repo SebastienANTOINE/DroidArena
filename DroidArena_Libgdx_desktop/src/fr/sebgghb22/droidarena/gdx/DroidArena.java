@@ -6,6 +6,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import fr.sebgghb22.droidarena.gdx.game.arena.Arena;
@@ -14,6 +15,7 @@ import fr.sebgghb22.droidarena.gdx.game.arena.MyWorld;
 import fr.sebgghb22.droidarena.gdx.game.item.Item;
 import fr.sebgghb22.droidarena.gdx.game.item.Properties;
 import fr.sebgghb22.droidarena.gdx.game.item.Robot;
+import fr.sebgghb22.droidarena.gdx.utils.Option;
 
 public class DroidArena implements ApplicationListener {
 
@@ -24,29 +26,37 @@ public class DroidArena implements ApplicationListener {
 	private SpriteBatch batch;
 	private Game g;
 	private World world;
-	private Arena a;
+	private Arena arena;
 	private Robot player;
 
 	public DroidArena(Game g) {
 		this.g = g;
+
 	}
 
 	@Override
 	public void create() {
-		player = new Robot(Properties.PLAYER1,a.getStartPosition().x, a.getStartPosition().y,a);
-		a.addBloc(player);
-		a.setPlayer(player);
+
+		System.out.println(g.getLevels().size());
+		Level level1 = g.getLevels().poll();
+		System.out.println(level1.getBlocs().size());
+
+		arena = new Arena(level1.getWidth(), level1.getHeight());
+		arena.setScreenSizeHeight((int) 1000);
+		arena.setScreenSizeWidth((int) 480);
+		arena.addAll(level1.getBlocs());
+
+		player = new Robot(Properties.PLAYER1, arena.getStartPosition().x, arena.getStartPosition().y, arena);
+		arena.addBloc(player);
+		arena.setPlayer(player);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 800, 480);
 		batch = new SpriteBatch();
 		this.world = MyWorld.getWorld();
-		System.out.println(g.getLevels().size());
-		Level level1 = g.getLevels().poll();
-		System.out.println(level1.getBlocs().size());
-		a = new Arena(level1.getWidth(), level1.getHeight());
-		a.setScreenSizeHeight((int) 1000);
-		a.setScreenSizeWidth((int) 480);
-		a.addAll(level1.getBlocs());
+
+		for (Item i : arena.getItems()) {
+			i.setTexture(new Texture(Gdx.files.internal(i.getImg())));
+		}
 	}
 
 	@Override
@@ -75,12 +85,9 @@ public class DroidArena implements ApplicationListener {
 		// all drops
 		batch.begin();
 
-
-		for (Item i : a.getItems()) {
-			System.out.println("" + i.getScreenPosition().x + ":"
-					+ i.getScreenPosition().y);
-			batch.draw(i.getSprite(), i.getScreenPosition().x,
-					i.getScreenPosition().y);
+		for (Item i : arena.getItems()) {
+			System.out.println(""+i.getScreenPosition().x+" =>"+ i.getScreenPosition().y);
+			batch.draw(i.getTexture(), i.getScreenPosition().x, i.getScreenPosition().y);
 			i.update();
 		}
 		batch.end();

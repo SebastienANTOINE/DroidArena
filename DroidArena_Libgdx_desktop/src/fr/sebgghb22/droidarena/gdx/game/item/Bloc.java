@@ -38,7 +38,9 @@ public class Bloc implements Item  {
 	/** The properties of the bloc */
 	protected Properties p;
 	
-	protected Texture img;
+	protected Texture tex;
+	
+	protected String img;
 
 	/**
 	 * Instantiates a new bloc.
@@ -50,7 +52,7 @@ public class Bloc implements Item  {
 	public Bloc(Properties p ,float x, float y){
 		bd = new BodyDef();
 		this.p = p;
-		this.img= new Texture(Gdx.files.internal(p.getImg()));
+		this.img= p.getImg();
 		bd.type = p.getBodyType();
 		bd.position.set(new Vec2((x+(25))*Option.SCALING, (y+(25))*Option.SCALING));
 		/*to scale image and body on the frame*/
@@ -140,8 +142,19 @@ public class Bloc implements Item  {
 	}
 
 	@Override
-	public Texture getSprite() {
+	public Texture getTexture() {
+		return tex;
+	}
+
+	@Override
+	public String getImg() {
+		// TODO Auto-generated method stub
 		return img;
+	}
+
+	@Override
+	public void setTexture(Texture t) {
+		this.tex=t;
 	}
 	
 }

@@ -70,7 +70,11 @@ public interface Item {
 	 */
 	public void update();
 	
-	public Texture getSprite();
+	public String getImg();
+	
+	public void setTexture(Texture t);
+	
+	public Texture getTexture();
 	
 	public Properties getProperties();
 }

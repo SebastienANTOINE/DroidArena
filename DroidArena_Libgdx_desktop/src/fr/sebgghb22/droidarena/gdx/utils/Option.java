@@ -44,7 +44,7 @@ public class Option {
 	public static int MAXBOT = 10;
 	
 	/** The UNIT. */
-	public static int UNIT=50;
+	public static int UNIT=64;
 	
 	/** The GRAVITY. */
 	public static Vec2 GRAVITY = new Vec2(0,0);
