@@ -40,10 +40,7 @@ public class DroidArena implements ApplicationListener {
 	@Override
 	public void create() {
 
-		System.out.println(g.getLevels().size());
 		Level level1 = g.getLevels().poll();
-		System.out.println(level1.getBlocs().size());
-
 		arena = new Arena(level1.getWidth(), level1.getHeight());
 		arena.setScreenSizeHeight((int) 480);
 		arena.setScreenSizeWidth((int) 800);
@@ -64,6 +61,7 @@ public class DroidArena implements ApplicationListener {
 		 */
 		
 		for (Item i : arena.getItems()) {
+			System.out.println("Init bloc : "+i.getProperties().name()+" at pos : " + i.getScreenPosition().x + ";" + i.getScreenPosition().y);
 			String img = i.getImg();
 			if (textureManager.containsKey(img)) {
 				i.setTexture(textureManager.get(img));
@@ -102,7 +100,6 @@ public class DroidArena implements ApplicationListener {
 		batch.begin();
 
 		for (Item i : arena.getItems()) {
-			System.out.println("" + i.getScreenPosition().x + " =>" + i.getScreenPosition().y);
 			batch.draw(i.getTexture(), i.getScreenPosition().x, i.getScreenPosition().y);
 			i.update();
 		}
