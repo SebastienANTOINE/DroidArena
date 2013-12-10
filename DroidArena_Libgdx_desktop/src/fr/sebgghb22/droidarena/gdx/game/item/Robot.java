@@ -153,12 +153,6 @@ public class Robot extends Bloc {
 		body.applyLinearImpulse(vec2, getBody().getPosition());
 	}
 
-	public void moveOnScreen(Vec2 position) {
-		System.out.println("move");
-		body.applyLinearImpulse(new Vec2(10,
-				10), new Vec2(0, 0));
-
-	}
 
 	/**
 	 * Right.
@@ -211,5 +205,10 @@ public class Robot extends Bloc {
 	public boolean isHurtable() {
 		return hurting;
 	}
+
+	@Override
+	public void update() {
+	}
+	
 
 }
