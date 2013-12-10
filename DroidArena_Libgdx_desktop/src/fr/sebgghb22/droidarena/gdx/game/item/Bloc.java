@@ -63,7 +63,7 @@ public class Bloc implements Item  {
 	@Override
 	public Vec2 getCenter() {
 		Vec2 center = body.getPosition();
-		return new Vec2((center.x/Option.SCALING)+tex.getWidth()/2,(center.y/Option.SCALING)+tex.getHeight()/2);
+		return new Vec2((center.x/Option.SCALING)-tex.getWidth()/2,(center.y/Option.SCALING)-tex.getHeight()/2);
 	}
 
 	/* (non-Javadoc)

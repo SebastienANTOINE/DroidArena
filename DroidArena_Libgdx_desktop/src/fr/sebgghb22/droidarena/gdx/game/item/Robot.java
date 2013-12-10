@@ -91,7 +91,7 @@ public class Robot extends Bloc {
 		this.body = createBody;
 		CircleShape shape = new CircleShape();
 		shape.m_type = ShapeType.CIRCLE;
-		shape.m_radius = (17.5f) * Option.SCALING;
+		shape.m_radius = Option.UNIT/4 * Option.SCALING;
 		FixtureDef fd = new FixtureDef();
 		fd.shape = shape;
 		fd.density = p.getResistance();
