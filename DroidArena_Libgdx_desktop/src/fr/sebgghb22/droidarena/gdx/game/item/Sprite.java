@@ -44,7 +44,7 @@ SNAP("magnet.png"), /** The CLOUD. */
 
 /** The img. */
 String img;
-String assetFolder="/sprites/";
+String assetFolder="assets/";
 
 	/**
 	 * Instantiates a new skin.
