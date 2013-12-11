@@ -22,8 +22,7 @@ import fr.sebgghb22.droidarena.gdx.game.item.Robot;
 import fr.sebgghb22.droidarena.gdx.inputs.AbstractInputProcessor;
 import fr.sebgghb22.droidarena.gdx.utils.Option;
 
-public class DroidArena extends AbstractInputProcessor implements
-		ApplicationListener {
+public class DroidArena extends AbstractInputProcessor implements ApplicationListener {
 
 	private static final float TIMESTEP = 1.0f / 15;
 	private static final int VELOCITY_ITERATIONS = 10;
@@ -46,16 +45,14 @@ public class DroidArena extends AbstractInputProcessor implements
 		Gdx.input.setInputProcessor(this);
 		Level level1 = g.getLevels().poll();
 		arena = new Arena(level1.getWidth(), level1.getHeight());
-		arena.setScreenSizeHeight(512);
-		arena.setScreenSizeWidth(1024);
+		arena.setScreenSizeHeight(Option.SCREENHEIGHT);
+		arena.setScreenSizeWidth(Option.SCREENWIDTH);
 		arena.addAll(level1.getBlocs());
-		player = new Robot(Properties.PLAYER1, arena.getStartPosition().x,
-				arena.getStartPosition().y, arena);
+		player = new Robot(Properties.PLAYER1, arena.getStartPosition().x, arena.getStartPosition().y, arena);
 		arena.addBloc(player);
 		arena.setPlayer(player);
 		camera = new OrthographicCamera();
-		camera.setToOrtho(true, arena.getScreenSizeWidth(),
-				arena.getScreenSizeHeight());
+		camera.setToOrtho(true, arena.getScreenSizeWidth(), arena.getScreenSizeHeight());
 		batch = new SpriteBatch();
 		this.world = MyWorld.getWorld();
 
@@ -73,8 +70,7 @@ public class DroidArena extends AbstractInputProcessor implements
 			if (textureManager.containsKey(img)) {
 				i.setTexture(textureManager.get(img));
 			} else {
-				Texture texture = new Texture(
-						Gdx.files.internal(Option.SPRITESFOLDER + img));
+				Texture texture = new Texture(Gdx.files.internal(Option.SPRITESFOLDER + img));
 				textureManager.put(img, texture);
 				i.setTexture(texture);
 			}
@@ -108,8 +104,7 @@ public class DroidArena extends AbstractInputProcessor implements
 		batch.begin();
 
 		for (Item i : arena.getItems()) {
-			batch.draw(i.getTexture(), i.getCenter().x - arena.decalingX(),
-					i.getCenter().y - arena.decalingY());
+			batch.draw(i.getTexture(), i.getCenter().x - arena.decalingX(), i.getCenter().y - arena.decalingY());
 			i.update();
 		}
 
@@ -148,6 +143,12 @@ public class DroidArena extends AbstractInputProcessor implements
 			break;
 		}
 		}
+		return true;
+	}
+
+	@Override
+	public boolean touchDown(int x, int y, int pointer, int bouton) {
+		player.setPositionOnScreen(new Vec2(x + arena.decalingX(), y + arena.decalingY()));
 		return true;
 	}
 }

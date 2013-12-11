@@ -29,11 +29,6 @@ public abstract class AbstractInputProcessor implements InputProcessor{
 		return false;
 	}
 
-	@Override
-	public boolean touchDown(int arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean touchDragged(int arg0, int arg1, int arg2) {

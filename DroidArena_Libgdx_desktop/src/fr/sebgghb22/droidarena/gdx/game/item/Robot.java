@@ -91,7 +91,7 @@ public class Robot extends Bloc {
 		this.body = createBody;
 		CircleShape shape = new CircleShape();
 		shape.m_type = ShapeType.CIRCLE;
-		shape.m_radius = Option.UNIT/4 * Option.SCALING;
+		shape.m_radius = Option.UNIT / 4 * Option.SCALING;
 		FixtureDef fd = new FixtureDef();
 		fd.shape = shape;
 		fd.density = p.getResistance();
@@ -117,9 +117,7 @@ public class Robot extends Bloc {
 	 * @return true, if is alive
 	 */
 	public boolean isAlive() {
-		if (this.getScreenPosition().x < 0 || this.getScreenPosition().y < 0
-				|| this.getScreenPosition().x > arena.getWidth()
-				|| this.getScreenPosition().y > arena.getHeight()) {
+		if (this.getScreenPosition().x < 0 || this.getScreenPosition().y < 0 || this.getScreenPosition().x > arena.getWidth() || this.getScreenPosition().y > arena.getHeight()) {
 			alive = false;
 		}
 		if (life > 0)
@@ -153,7 +151,6 @@ public class Robot extends Bloc {
 		body.applyLinearImpulse(vec2, getBody().getPosition());
 	}
 
-
 	/**
 	 * Right.
 	 */
@@ -182,7 +179,6 @@ public class Robot extends Bloc {
 		isFinish = b;
 	}
 
-
 	/**
 	 * Gets the joint list.
 	 * 
@@ -209,6 +205,15 @@ public class Robot extends Bloc {
 	@Override
 	public void update() {
 	}
-	
+
+	public void setPositionOnScreen(Vec2 newPos) {
+		System.out.println("move on screen at: " +newPos.x + ";"+newPos.y);
+		super.getBodyDef().position.set(new Vec2(newPos.x * Option.SCALING, newPos.y * Option.SCALING));
+		Vec2 movement = body.getLinearVelocity();
+		arena.removeBloc(this);
+		arena.addBloc(this);
+		move(movement);
+
+	}
 
 }

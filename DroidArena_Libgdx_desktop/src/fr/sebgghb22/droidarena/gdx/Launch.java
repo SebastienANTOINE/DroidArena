@@ -20,8 +20,8 @@ public class Launch {
 		cfg.title = "DroidArena";
 //		cfg.width = Option.SCREENWIDTH;
 //		cfg.height = Option.SCREENHEIGHT;
-		cfg.width = 1024;
-		cfg.height = 512;
+		cfg.width = 480;
+		cfg.height = 320;
 		InputStream ims = Launch.class.getClass().getResourceAsStream(
 				"/fr/sebgghb22/droidarena/gdx/arena.txt");
 		ConcurrentLinkedQueue<Level> levels = null;
