@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import android.content.res.AssetManager;
-import android.os.Bundle;
-import android.view.Display;
-
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
+import android.content.res.AssetManager;
+import android.os.Bundle;
+import android.view.Display;
 import fr.sebgghb22.droidarena_libgdx_android.gdx.game.arena.Level;
 import fr.sebgghb22.droidarena_libgdx_android.gdx.game.arena.ParseArena;
 
